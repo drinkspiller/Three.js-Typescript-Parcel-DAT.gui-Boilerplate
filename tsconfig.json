@@ -2,6 +2,6 @@
   "include": ["js/**/*", "ts/parcel.d.ts"],
   "compilerOptions": {
     "target": "es6",
-    "moduleResolution": "node",
+    "moduleResolution": "node"
   }
 }
