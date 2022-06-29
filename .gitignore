@@ -1,0 +1,8 @@
+.parcel-cache
+node_modules
+package-lock.json
+.sass-cache
+
+# System Files
+.DS_Store
+Thumbs.db
