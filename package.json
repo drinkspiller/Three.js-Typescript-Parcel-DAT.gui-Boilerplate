@@ -1,5 +1,5 @@
 {
-  "name": "threejs_typescript_parcel",
+  "name": "threejs_typescript_parcel_datgui_boilerplate",
   "version": "1.0.0",
   "description": "",
   "browserslist": "last 2 Chrome versions, last 2 Firefox versions, last 2 Edge versions, last 2 Safari versions, last 2 Android versions, last 2 ChromeAndroid versions, last 2 iOS versions",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://skyegior@gmail.com@source.developers.google.com:2022/p/bzzz-354215/r/bzzz"
+    "url": "https://github.com/drinkspiller/Three.js-Typescript-Parcel-DAT.gui-Boilerplate"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +26,7 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
+    "dat.gui": "^0.7.9",
     "rxjs": "^7.5.5",
     "three": "^0.140.2"
   }
