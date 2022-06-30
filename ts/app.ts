@@ -64,7 +64,7 @@ export class App {
     document.body.appendChild(this.stats.dom);
 
     const gridHelper = new THREE.GridHelper(5, undefined, 'yellow', 'gray');
-    this.scene.add('gridHelper');
+    this.scene.add(gridHelper);
 
     this.orbitControls.addEventListener('change', () => this.render());
   }
