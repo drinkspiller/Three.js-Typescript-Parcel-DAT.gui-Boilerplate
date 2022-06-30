@@ -16,6 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.2",
+    "@parcel/transformer-typescript-tsc": "^2.6.2",
     "@parcel/validator-typescript": "^2.6.2",
     "@types/dat.gui": "^0.7.7",
     "@types/three": "^0.140.0",

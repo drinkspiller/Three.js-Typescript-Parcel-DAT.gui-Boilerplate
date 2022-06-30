@@ -10,6 +10,7 @@ export class App {
   private cube: THREE.Mesh;
   private directionalLight = new THREE.DirectionalLight();
   private gui: GUI;
+  privateisDev: boolean;
   private renderer: THREE.Renderer = new THREE.WebGLRenderer();
   private orbitControls: OrbitControls =
     new OrbitControls(this.camera, this.renderer.domElement);
@@ -22,7 +23,6 @@ export class App {
   // returns type `Stats` instead of `void`.
   private stats: Stats = new Stats();
   private static _singleton: App = new this();
-  isDev: boolean;
 
   static get app() {
     return this._singleton;
@@ -43,8 +43,8 @@ export class App {
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.near = 0.1;
     this.camera.far = 1000;
-    this.camera.position.y = 4;
-    this.camera.position.z = 4;
+    this.camera.position.y = 5;
+    this.camera.position.z = 5;
     this.camera.lookAt(new THREE.Vector3(0, 0, 0));
     this.camera.updateProjectionMatrix();
 
