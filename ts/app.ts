@@ -10,7 +10,7 @@ export class App {
   private cube: THREE.Mesh;
   private directionalLight = new THREE.DirectionalLight();
   private gui: GUI;
-  privateisDev: boolean;
+  private isDev: boolean;
   private renderer: THREE.Renderer = new THREE.WebGLRenderer();
   private orbitControls: OrbitControls =
     new OrbitControls(this.camera, this.renderer.domElement);
