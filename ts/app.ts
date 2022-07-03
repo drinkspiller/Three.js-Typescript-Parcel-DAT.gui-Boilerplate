@@ -86,7 +86,7 @@ export class App {
         new THREE.DirectionalLightHelper(this.directionalLight, 1);
     this.scene.add(directionalLightHelper);
 
-    const directionalLightFolder = this.gui.addFolder('Directionalal Light');
+    const directionalLightFolder = this.gui.addFolder('Directional Light');
     directionalLightFolder.add(this.directionalLight.position, 'x', 1, 50)
         .listen();
     directionalLightFolder.add(this.directionalLight.position, 'y', 1, 50)
