@@ -47,9 +47,9 @@ export class App {
     this.camera.updateProjectionMatrix();
 
     const cameraPositionFolder = this.gui.addFolder('Camera Position');
-    cameraPositionFolder.add(this.camera.position, 'x', 0, 50, .01);
-    cameraPositionFolder.add(this.camera.position, 'y', 0, 50, .01);
-    cameraPositionFolder.add(this.camera.position, 'z', 0, 50, .01);
+    cameraPositionFolder.add(this.camera.position, 'x', 0, 50, .01).listen();
+    cameraPositionFolder.add(this.camera.position, 'y', 0, 50, .01).listen();
+    cameraPositionFolder.add(this.camera.position, 'z', 0, 50, .01).listen();
     cameraPositionFolder.open();
   }
 
@@ -93,10 +93,14 @@ export class App {
     this.scene.add(directionalLightHelper);
 
     const directionalLightFolder = this.gui.addFolder('Directional Light');
-    directionalLightFolder.add(this.directionalLight.position, 'x', 0, 50, .01);
-    directionalLightFolder.add(this.directionalLight.position, 'y', 0, 50, .01);
-    directionalLightFolder.add(this.directionalLight.position, 'z', 0, 50, .01);
-    directionalLightFolder.add(this.directionalLight, 'intensity', 0, 5, .01);
+    directionalLightFolder.add(this.directionalLight.position, 'x', 0, 50, .01)
+        .listen();
+    directionalLightFolder.add(this.directionalLight.position, 'y', 0, 50, .01)
+        .listen();
+    directionalLightFolder.add(this.directionalLight.position, 'z', 0, 50, .01)
+        .listen();
+    directionalLightFolder.add(this.directionalLight, 'intensity', 0, 5, .01)
+        .listen();
     directionalLightFolder.open();
   }
 
