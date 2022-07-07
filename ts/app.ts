@@ -10,7 +10,7 @@ export class App {
   private cube: THREE.Mesh;
   private directionalLight = new THREE.DirectionalLight();
   private gui: GUI;
-  privateisDev: boolean;
+  private isDev: boolean;
   private renderer: THREE.Renderer = new THREE.WebGLRenderer();
   private orbitControls: OrbitControls =
     new OrbitControls(this.camera, this.renderer.domElement);
@@ -56,7 +56,7 @@ export class App {
   }
 
   configureDev() {
-    if (this.queryString['dev']) {
+    if (this.queryString.get('dev')) {
       this.isDev = true;
     }
 
@@ -86,7 +86,7 @@ export class App {
         new THREE.DirectionalLightHelper(this.directionalLight, 1);
     this.scene.add(directionalLightHelper);
 
-    const directionalLightFolder = this.gui.addFolder('Directionalal Light');
+    const directionalLightFolder = this.gui.addFolder('Directional Light');
     directionalLightFolder.add(this.directionalLight.position, 'x', 1, 50)
         .listen();
     directionalLightFolder.add(this.directionalLight.position, 'y', 1, 50)

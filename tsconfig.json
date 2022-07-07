@@ -1,8 +1,9 @@
 {
   "include": ["ts/**/*", ],
   "compilerOptions": {
-    "target": "es2021",
+    "moduleResolution": "node",
     "strict": true,
-    "moduleResolution": "node"
+    "strictPropertyInitialization": false,
+    "target": "es2021",
   }
 }
