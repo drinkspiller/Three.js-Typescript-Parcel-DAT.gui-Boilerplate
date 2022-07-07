@@ -14,9 +14,7 @@ export class App {
   private renderer: THREE.Renderer = new THREE.WebGLRenderer();
   private orbitControls: OrbitControls =
     new OrbitControls(this.camera, this.renderer.domElement);
-  private queryString = new Proxy(new URLSearchParams(window.location.search), {
-    get: (searchParams, property) => searchParams.get(<string>property),
-  });
+  private queryString = new URLSearchParams(window.location.search);
   private scene: THREE.Scene = new THREE.Scene();
   // @ts-ignore Used to avoid lint error "Only a void function can be called
   // with the 'new' keyword." since the types bundled with package specify it
