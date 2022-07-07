@@ -47,10 +47,10 @@ export class App {
     this.camera.updateProjectionMatrix();
 
     const cameraPositionFolder = this.gui.addFolder('Camera Position');
+    cameraPositionFolder.add(this.camera.position, 'x', 0, 50, .01);
+    cameraPositionFolder.add(this.camera.position, 'y', 0, 50, .01);
+    cameraPositionFolder.add(this.camera.position, 'z', 0, 50, .01);
     cameraPositionFolder.open();
-    cameraPositionFolder.add(this.camera.position, 'x', 1, 50).listen();
-    cameraPositionFolder.add(this.camera.position, 'y', 1, 50).listen();
-    cameraPositionFolder.add(this.camera.position, 'z', 1, 50).listen();
   }
 
   configureDev() {
@@ -64,7 +64,15 @@ export class App {
     const gridHelper = new THREE.GridHelper(5, undefined, 'yellow', 'gray');
     this.scene.add(gridHelper);
 
-    this.orbitControls.addEventListener('change', () => this.render());
+    const orbitControlsFolder = this.gui.addFolder('Orbit Controls');
+    const orbitControlOptions = {
+      enabled: true,
+    };
+    orbitControlsFolder.add(orbitControlOptions, 'enabled')
+        .onChange((isEnabled) => {
+          this.orbitControls.enabled = isEnabled;
+        });
+    orbitControlsFolder.open();
   }
 
   configureEventListeners() {
@@ -85,14 +93,10 @@ export class App {
     this.scene.add(directionalLightHelper);
 
     const directionalLightFolder = this.gui.addFolder('Directional Light');
-    directionalLightFolder.add(this.directionalLight.position, 'x', 1, 50)
-        .listen();
-    directionalLightFolder.add(this.directionalLight.position, 'y', 1, 50)
-        .listen();
-    directionalLightFolder.add(this.directionalLight.position, 'z', 1, 50)
-        .listen();
-    directionalLightFolder.add(this.directionalLight, 'intensity', .25, 5, .01)
-        .listen();
+    directionalLightFolder.add(this.directionalLight.position, 'x', 0, 50, .01);
+    directionalLightFolder.add(this.directionalLight.position, 'y', 0, 50, .01);
+    directionalLightFolder.add(this.directionalLight.position, 'z', 0, 50, .01);
+    directionalLightFolder.add(this.directionalLight, 'intensity', 0, 5, .01);
     directionalLightFolder.open();
   }
 
