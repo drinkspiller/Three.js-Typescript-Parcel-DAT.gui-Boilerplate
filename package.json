@@ -6,6 +6,7 @@
   "source": "index.html",
   "scripts": {
     "start": "npx parcel",
+    "dev": "npm run start",
     "build": "npx parcel build"
   },
   "repository": {
