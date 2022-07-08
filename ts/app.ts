@@ -68,6 +68,7 @@ export class App {
     const orbitControlOptions = {
       enabled: true,
     };
+    this.orbitControls.enabled = orbitControlOptions.enabled;
     orbitControlsFolder.add(orbitControlOptions, 'enabled')
         .onChange((isEnabled) => {
           this.orbitControls.enabled = isEnabled;
