@@ -27,13 +27,13 @@ export class App {
   }
 
   private animate() {
-    requestAnimationFrame(() => this.animate());
-
     this.cube.rotation.x += 0.01;
     this.cube.rotation.y += 0.01;
 
     this.render();
     this.stats.update();
+
+    requestAnimationFrame(() => this.animate());
   }
 
   configureCamera() {
@@ -130,15 +130,14 @@ export class App {
     this.animate();
   }
 
+  render() {
+    this.renderer.render(this.scene, this.camera);
+  }
 
   updateResizedWindow() {
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.render();
-  }
-
-  render() {
-    this.renderer.render(this.scene, this.camera);
   }
 }
