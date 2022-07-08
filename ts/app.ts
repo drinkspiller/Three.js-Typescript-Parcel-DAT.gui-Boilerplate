@@ -20,7 +20,7 @@ export class App {
   // with the 'new' keyword." since the types bundled with package specify it
   // returns type `Stats` instead of `void`.
   private stats: Stats = new Stats();
-  private static _singleton: App = new this();
+  private static _singleton: App = new App();
 
   static get app() {
     return this._singleton;
