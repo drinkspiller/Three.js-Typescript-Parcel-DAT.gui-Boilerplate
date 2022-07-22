@@ -4,6 +4,7 @@ import {debounceTime} from 'rxjs/operators';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import Stats from 'three/examples/jsm/libs/stats.module';
+import {Logo} from './Logo';
 
 export class App {
   private camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera();
@@ -27,9 +28,6 @@ export class App {
   }
 
   private animate() {
-    this.cube.rotation.x += 0.01;
-    this.cube.rotation.y += 0.01;
-
     this.render();
     this.stats.update();
 
@@ -41,8 +39,9 @@ export class App {
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.near = 0.1;
     this.camera.far = 1000;
-    this.camera.position.y = 5;
-    this.camera.position.z = 5;
+    this.camera.position.x = 0;
+    this.camera.position.y = .2;
+    this.camera.position.z = 2;
     this.camera.lookAt(new THREE.Vector3(0, 0, 0));
     this.camera.updateProjectionMatrix();
 
@@ -84,13 +83,14 @@ export class App {
 
   configureLights() {
     this.directionalLight.color = new THREE.Color(0xffffff);
-    this.directionalLight.intensity = 1;
+    this.directionalLight.intensity = 1.5;
     this.directionalLight.position.set(2, 2, 2);
 
     this.scene.add(this.directionalLight);
 
     const directionalLightHelper =
         new THREE.DirectionalLightHelper(this.directionalLight, 1);
+
     this.scene.add(directionalLightHelper);
 
     const directionalLightFolder = this.gui.addFolder('Directional Light');
@@ -106,12 +106,7 @@ export class App {
   }
 
   configureMesh() {
-    const geometry: THREE.BufferGeometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshStandardMaterial({
-      color: 0x00ff00,
-    });
-    this.cube = new THREE.Mesh(geometry, material);
-    this.scene.add(this.cube);
+    this.scene.add(new Logo());
   }
 
   configureRenderer() {
