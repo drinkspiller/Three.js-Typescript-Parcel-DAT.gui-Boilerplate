@@ -11,7 +11,8 @@ export class App {
   private directionalLight = new THREE.DirectionalLight();
   private gui!: GUI;
   private isDev!: boolean;
-  private renderer: THREE.WebGLRenderer = new THREE.WebGLRenderer();
+  private renderer: THREE.WebGLRenderer =
+    new THREE.WebGLRenderer({antialias: true});
   private orbitControls: OrbitControls = new OrbitControls(
     this.camera,
     this.renderer.domElement,
