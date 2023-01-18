@@ -7,13 +7,15 @@ import Stats from 'three/examples/jsm/libs/stats.module';
 
 export class App {
   private camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera();
-  private cube: THREE.Mesh;
+  private cube!: THREE.Mesh;
   private directionalLight = new THREE.DirectionalLight();
-  private gui: GUI;
-  private isDev: boolean;
+  private gui!: GUI;
+  private isDev!: boolean;
   private renderer: THREE.WebGLRenderer = new THREE.WebGLRenderer();
-  private orbitControls: OrbitControls =
-    new OrbitControls(this.camera, this.renderer.domElement);
+  private orbitControls: OrbitControls = new OrbitControls(
+    this.camera,
+    this.renderer.domElement,
+  );
   private queryString = new URLSearchParams(window.location.search);
   private scene: THREE.Scene = new THREE.Scene();
   // @ts-ignore Used to avoid lint error "Only a void function can be called
@@ -47,9 +49,9 @@ export class App {
     this.camera.updateProjectionMatrix();
 
     const cameraPositionFolder = this.gui.addFolder('Camera Position');
-    cameraPositionFolder.add(this.camera.position, 'x', 0, 50, .01).listen();
-    cameraPositionFolder.add(this.camera.position, 'y', 0, 50, .01).listen();
-    cameraPositionFolder.add(this.camera.position, 'z', 0, 50, .01).listen();
+    cameraPositionFolder.add(this.camera.position, 'x', 0, 50, 0.01).listen();
+    cameraPositionFolder.add(this.camera.position, 'y', 0, 50, 0.01).listen();
+    cameraPositionFolder.add(this.camera.position, 'z', 0, 50, 0.01).listen();
     cameraPositionFolder.open();
   }
 
@@ -69,17 +71,18 @@ export class App {
       enabled: true,
     };
     this.orbitControls.enabled = orbitControlOptions.enabled;
-    orbitControlsFolder.add(orbitControlOptions, 'enabled')
-        .onChange((isEnabled) => {
-          this.orbitControls.enabled = isEnabled;
-        });
+    orbitControlsFolder
+      .add(orbitControlOptions, 'enabled')
+      .onChange((isEnabled) => {
+        this.orbitControls.enabled = isEnabled;
+      });
     orbitControlsFolder.open();
   }
 
   configureEventListeners() {
     fromEvent(window, 'resize')
-        .pipe(debounceTime(75))
-        .subscribe(() => this.updateResizedWindow());
+      .pipe(debounceTime(75))
+      .subscribe(() => this.updateResizedWindow());
   }
 
   configureLights() {
@@ -89,19 +92,25 @@ export class App {
 
     this.scene.add(this.directionalLight);
 
-    const directionalLightHelper =
-        new THREE.DirectionalLightHelper(this.directionalLight, 1);
+    const directionalLightHelper = new THREE.DirectionalLightHelper(
+      this.directionalLight,
+      1,
+    );
     this.scene.add(directionalLightHelper);
 
     const directionalLightFolder = this.gui.addFolder('Directional Light');
-    directionalLightFolder.add(this.directionalLight.position, 'x', 0, 50, .01)
-        .listen();
-    directionalLightFolder.add(this.directionalLight.position, 'y', 0, 50, .01)
-        .listen();
-    directionalLightFolder.add(this.directionalLight.position, 'z', 0, 50, .01)
-        .listen();
-    directionalLightFolder.add(this.directionalLight, 'intensity', 0, 5, .01)
-        .listen();
+    directionalLightFolder
+      .add(this.directionalLight.position, 'x', 0, 50, 0.01)
+      .listen();
+    directionalLightFolder
+      .add(this.directionalLight.position, 'y', 0, 50, 0.01)
+      .listen();
+    directionalLightFolder
+      .add(this.directionalLight.position, 'z', 0, 50, 0.01)
+      .listen();
+    directionalLightFolder
+      .add(this.directionalLight, 'intensity', 0, 5, 0.01)
+      .listen();
     directionalLightFolder.open();
   }
 
